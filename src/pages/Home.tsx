@@ -27,7 +27,7 @@ function Home() {
             values ={townArray}
         ></DropDown>
         <DropDown 
-            title="Flat Type"
+            title="Flat Type"   
             values ={flatTypeArray}
         ></DropDown>
       </Grid>
