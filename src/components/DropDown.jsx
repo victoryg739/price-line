@@ -8,20 +8,6 @@ import { FunctionBody, FunctionDeclaration } from "typescript";
 
 function DropDown(props) {
   const [open, setOpen] = React.useState(false);
-
-
-
-//   const handleChange = (event: SelectChangeEvent<typeof age>) => {
-//     setAge(event.target.value);
-//     console.log(event.target.value);
-//   };
-
-// const handleChange = (event) => {
-//     setAge(event.target.value);
-//     console.log(event.target.value);
-//   };
-
-
   const handleClose = () => {
     setOpen(false);
   };

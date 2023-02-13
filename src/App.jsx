@@ -7,7 +7,6 @@ import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Route, Routes,useNavigate } from "react-router-dom";
 import axios from 'axios';
 
-
 function App() {
   const navigate = useNavigate();
 
@@ -22,13 +21,15 @@ function App() {
 
   const [data,setData ]= useState(null);
   const handleOnSubmit = async(event)=>{
-      console.log(filterValue);
       const response = await axios.post('http://127.0.0.1:8000/api/',filterValue)
-      console.log(response.data.result.records);
-      setData(response.data.result.records);
-      console.log(data);
-      navigate('/search');    
-      //console.log(response)
+      console.log(response.data.result.records.length);
+      if(response.data.result.records.length === 0){ 
+        alert("No data matching the filtered results found, please try adjusting the filters")
+
+      }else{
+        setData(response.data.result.records);
+        navigate('/search');    
+      }
   };
   // {    "town": "null",
   //     "flatType": "null",
@@ -38,7 +39,6 @@ function App() {
   //     "remainingLease": "null",}
 
   const handleChange = (event) => {
-    console.log(event.target.value);
     if (event.target.name === "Town") {
       setFilterValue((prevFilterValue) => ({
         ...prevFilterValue,
@@ -73,6 +73,7 @@ function App() {
   };
 
   return (
+    
     <Routes>
       <Route
         path="/"

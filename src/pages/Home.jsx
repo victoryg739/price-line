@@ -83,7 +83,7 @@ const remainingLeaseArray = [
   "60 - 69 YEARS",
   "70 - 79 YEARS",
   "80 - 89 YEARS",
-  "> 90 YEARS",
+  "> 89 YEARS",
 ];
 
 const floorAreaArray = [
