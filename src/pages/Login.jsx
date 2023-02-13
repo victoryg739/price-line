@@ -54,6 +54,13 @@ function Login(props) {
               id="password"
               
             /></p>
+            <Button
+          sx={{ mt: 10 }}
+          variant="contained"
+          endIcon={<SendIcon />}
+          onClick={props.handleOnSubmit}
+        >Login</Button>
+        
         </Grid>
         
        </div>
