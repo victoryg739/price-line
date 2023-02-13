@@ -1,6 +1,7 @@
 import React from "react";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
+import Login from "./pages/Login";
 import { useState } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Route, Routes,useNavigate } from "react-router-dom";
@@ -93,6 +94,7 @@ function App() {
       <Route path="/search" element={<Search 
         data = {data}
       />} />
+      <Route path = "/login" element={<Login/>}/>
 
     </Routes>
   );
