@@ -41,9 +41,9 @@ function Login(props) {
               margin="auto"
               required
               
-              id="email"
+              id="username"
               label="Username"
-              name="email"
+              name="username"
               autoFocus
               
             /></p>
