@@ -1,7 +1,7 @@
 import React from 'react'
 import logo from "../assets/logo.png";
 import NavBar from "../components/NavBar";
-import DropDown from "../components/DropDown";
+
 import { Typography } from "@mui/material";
 import { Container } from "@mui/system";
 import { Box } from "@mui/system";
@@ -28,9 +28,12 @@ function Login(props) {
         alignItems="center"
         //justifyContent="center"
         style={{ minHeight: "100vh" }}>
-          <Avatar sx={{ m: 2 }} src = {logo}>
+          <Avatar
+           sx={{ width: 100, height: 100 }}
+          src = {logo}
+          />
             
-          </Avatar>
+          
         <Typography component="h1" variant="h5" align ="center">
             Login
           </Typography>
