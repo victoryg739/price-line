@@ -11,12 +11,12 @@ function App() {
   const navigate = useNavigate();
 
   const [filterValue, setFilterValue] = useState({
-    town: "null",
-    flatType: "null",
-    flatModel: "null",
-    floorArea: "null",
-    floor: "null",
-    remainingLease: "null",
+    town: "ANG MO KIO",
+    flatType: "Any",
+    flatModel: "Any",
+    floorArea: "Any",
+    floor: "Any",
+    remainingLease: "Any",
   });
 
   const [data,setData ]= useState(null);

@@ -39,6 +39,7 @@ const townArray = [
 ];
 
 const flatTypeArray = [
+  "Any",
   "1 ROOM",
   "2 ROOM",
   "3 ROOM",
@@ -48,9 +49,10 @@ const flatTypeArray = [
   "MULTI-GENERATION",
 ];
 
-const storeyArray = ["GROUND", "LOW", "MEDIUM", "HIGH"];
+const storeyArray = ["Any","1st - 10th","11th - 20th", "21st - 30th", "> 30th"];
 
 const flatModelArray = [
+  "Any",
   "Improved",
   "Standard",
   "Model A",
@@ -75,7 +77,8 @@ const flatModelArray = [
 ];
 
 const remainingLeaseArray = [
-  "<50 YEARS",
+  "Any",
+  "< 50 YEARS",
   "50 - 59 YEARS",
   "60 - 69 YEARS",
   "70 - 79 YEARS",
@@ -84,7 +87,8 @@ const remainingLeaseArray = [
 ];
 
 const floorAreaArray = [
-  "<40 SQM",
+  "Any",
+  "< 40 SQM",
   "40 - 49 SQM",
   "50 - 59 SQM",
   "60 - 69 SQM",

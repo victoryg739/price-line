@@ -31,8 +31,8 @@ function DropDown(props) {
   };
   return (
         <Grid xs={12} >
-          <FormControl sx={{mt:6, width:400}}  required>
-            <InputLabel >{props.title}</InputLabel>
+          <FormControl sx={{mt:6, width:400}} >
+            <InputLabel  >{props.title}</InputLabel>
             <Select
               // labelId="demo-controlled-open-select-label"
               // id="demo-controlled-open-select"
@@ -40,10 +40,10 @@ function DropDown(props) {
               onClose={handleClose}
               onOpen={handleOpen}
               value={props.stateValue}
-              label="Age"
               name={props.title}
               onChange={props.handleChange}
-            >
+            > 
+
                 {(props.values).map((value)=>(
                     <MenuItem value={value}>{value}</MenuItem>
                 ))}
