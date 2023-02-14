@@ -2,12 +2,14 @@ import React from "react";
 import NavBar from "../components/NavBar";
 import DropDown from "../components/DropDown";
 import { Typography } from "@mui/material";
-import { Container } from "@mui/system";
 import { Box } from "@mui/system";
 import { Grid } from "@mui/material";
 import { Button } from "@mui/material";
 import SendIcon from "@mui/icons-material/Send";
-import { useState } from "react";
+import Card from '@mui/joy/Card';
+import CardCover from '@mui/joy/CardCover';
+import CardContent from '@mui/joy/CardContent';
+import housingCard from "../assets/housingCard.jpg";
 
 const townArray = [
   "ANG MO KIO",
@@ -49,7 +51,13 @@ const flatTypeArray = [
   "MULTI-GENERATION",
 ];
 
-const storeyArray = ["Any","1st - 10th","11th - 20th", "21st - 30th", "> 30th"];
+const storeyArray = [
+  "Any",
+  "1st - 10th",
+  "11th - 20th",
+  "21st - 30th",
+  "> 30th",
+];
 
 const flatModelArray = [
   "Any",
@@ -118,6 +126,26 @@ function Home(props) {
         //justifyContent="center"
         style={{ minHeight: "100vh" }}
       >
+      <Card component="li" sx={{ mt:8 ,minWidth: "80%",minHeight:200 }}>
+        <CardCover>
+          <img 
+            src={housingCard}
+            loading="lazy"
+            alt = "wall"
+          />
+        </CardCover>
+        <CardContent>
+          <Typography 
+            level="h5"
+            fontWeight="bold"
+            color="black"
+            sx={{ml:5,mt:5}}
+          >
+            This is our website for flat design
+          </Typography>
+        </CardContent>
+      </Card>
+
         <DropDown
           stateValue={props.town}
           handleChange={props.handleChange}
