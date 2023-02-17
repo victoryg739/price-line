@@ -11,6 +11,8 @@ import SendIcon from "@mui/icons-material/Send";
 import { useState } from "react";
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
+import Footer from "../components/Footer";
+
 function Login(props) {
   const inputProps = {
     step: 300,
@@ -61,6 +63,8 @@ function Login(props) {
           Login
         </Button>
       </Grid>
+      <Footer></Footer>
+
     </div>
   );
 }
