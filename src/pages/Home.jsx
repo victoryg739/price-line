@@ -10,6 +10,7 @@ import Card from '@mui/joy/Card';
 import CardCover from '@mui/joy/CardCover';
 import CardContent from '@mui/joy/CardContent';
 import housingCard from "../assets/housingCard.jpg";
+import Footer from "../components/Footer";
 
 const townArray = [
   "ANG MO KIO",
@@ -135,13 +136,25 @@ function Home(props) {
           />
         </CardCover>
         <CardContent>
+        <Typography 
+            level="h5"
+            variant="h4"
+            fontWeight="bold"
+            color="white"
+            sx={{mt:5}}
+            align="center"
+          >
+            Discover the value of your HDB flats with ease
+          </Typography>
           <Typography 
             level="h5"
-            fontWeight="bold"
-            color="black"
-            sx={{ml:5,mt:5}}
+            variant="h6"
+            fontWeight="300"
+            color="white"
+            sx={{mt:5}}
+            align="center"
           >
-            This is our website for flat design
+            With data provided by data.gov.sg and top of the line machine learning algorithm
           </Typography>
         </CardContent>
       </Card>
@@ -191,6 +204,7 @@ function Home(props) {
           Submit
         </Button>
       </Grid>
+      <Footer></Footer>
     </Box>
   );
 }
