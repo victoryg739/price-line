@@ -6,6 +6,8 @@ import { useState } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Route, Routes,useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Feedback from "./pages/Feedback";
+import About from "./pages/About";
 
 function App() {
   const navigate = useNavigate();
@@ -95,7 +97,11 @@ function App() {
       <Route path="/search" element={<Search 
         data = {data}
       />} />
-      <Route path = "/login" element={<Login/>}/>
+      <Route path = "/Login" element={<Login/>}/>
+
+      <Route path = "/Feedback" element ={<Feedback/>} />
+
+      <Route path = "/About" element ={<About/>} />
 
     </Routes>
   );

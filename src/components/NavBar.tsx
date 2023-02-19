@@ -12,7 +12,7 @@ import {useNavigate} from "react-router-dom";
 
 import logo from "../assets/logo.png";
 
-const pages = ["About us", "Review"];
+const pages = ["About us", "Feedback"];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -62,7 +62,7 @@ function ResponsiveAppBar() {
             {pages.map((page) => (
               <Button
                 key={page}
-                onClick={handleCloseNavMenu}
+                onClick={()=>{navigate("/Feedback")}}
                 sx={{ my: 2, color: "white", display: "block" }}
               >
                 {page}
@@ -71,7 +71,7 @@ function ResponsiveAppBar() {
           </Box>
 
           <Box >
-            <Button onClick = {()=>{navigate("/login")}}variant="contained">Login</Button>
+            <Button onClick = {()=>{navigate("/Login")}}variant="contained">Login</Button>
           </Box>
         </Toolbar>
       </Container>
