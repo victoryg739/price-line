@@ -2,17 +2,12 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import IconButton from "@mui/material/IconButton";
-import Typography from "@mui/material/Typography";
 import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
-import MenuItem from "@mui/material/MenuItem";
-import {useNavigate} from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 
 import logo from "../assets/logo.png";
-
-const pages = ["About us", "Feedback"];
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
@@ -29,49 +24,59 @@ function ResponsiveAppBar() {
   };
 
   return (
-    <AppBar style={{ background: "#659DBD", position:"static"}}>
+    <AppBar style={{ background: "#659DBD", position: "static" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
-          <img style ={{cursor:"pointer"}} onClick ={()=>{navigate("/")}} src={logo} width="100" height="100" alt="LOGO" />
-            <Menu
-              id="menu-appbar"
-              anchorEl={anchorElNav}
-              anchorOrigin={{
-                vertical: "bottom",
-                horizontal: "left",
-              }}
-              keepMounted
-              transformOrigin={{
-                vertical: "top",
-                horizontal: "left",
-              }}
-              open={Boolean(anchorElNav)}
-              onClose={handleCloseNavMenu}
-              sx={{
-                display: { xs: "block", md: "none" },
-              }}
-            >
-              {pages.map((page) => (
-                <MenuItem key={page} onClick={handleCloseNavMenu}>
-                  <Typography textAlign="center">{page}</Typography>
-                </MenuItem>
-              ))}
-            </Menu>
-     
+          <img
+            style={{ cursor: "pointer" }}
+            onClick={() => {
+              navigate("/");
+            }}
+            src={logo}
+            width="100"
+            height="100"
+            alt="LOGO"
+          />
+          <Menu
+            id="menu-appbar"
+            anchorEl={anchorElNav}
+            anchorOrigin={{
+              vertical: "bottom",
+              horizontal: "left",
+            }}
+            keepMounted
+            transformOrigin={{
+              vertical: "top",
+              horizontal: "left",
+            }}
+            open={Boolean(anchorElNav)}
+            onClose={handleCloseNavMenu}
+            sx={{
+              display: { xs: "block", md: "none" },
+            }}
+          ></Menu>
+
           <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
-            {pages.map((page) => (
-              <Button
-                key={page}
-                onClick={()=>{navigate("/Feedback")}}
-                sx={{ my: 2, color: "white", display: "block" }}
-              >
-                {page}
-              </Button>
-            ))}
+            <Button
+              key="Feedback"
+              onClick={() => {
+                navigate("/Feedback");
+              }}
+              sx={{ ml:3, my: 2, color: "white", display: "block" }}
+            >
+              Feedback
+            </Button>
           </Box>
 
-          <Box >
-            <Button onClick = {()=>{navigate("/Login")}}variant="contained">Login</Button>
+          <Box>
+            <Button 
+              onClick={() => {
+                navigate("/login");
+              }}
+              variant="contained"
+            >
+              Admin Login
+            </Button>
           </Box>
         </Toolbar>
       </Container>

@@ -11,12 +11,12 @@ import SendIcon from "@mui/icons-material/Send";
 import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Footer from "../components/Footer";
-
+import { Box } from "@mui/system";
 function Feedback(props) {
  
 
   return (
-    <div>
+    <Box>
       <NavBar></NavBar>
       <Grid
         container
@@ -80,7 +80,7 @@ function Feedback(props) {
       
 </Grid>
 <Footer></Footer>
-    </div>
+    </Box>
   );
 }
 
