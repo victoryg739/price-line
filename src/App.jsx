@@ -6,6 +6,7 @@ import { useState } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
 import { Route, Routes,useNavigate } from "react-router-dom";
 import axios from 'axios';
+import Review from "./pages/Review";
 
 function App() {
   const navigate = useNavigate();
@@ -96,6 +97,8 @@ function App() {
         data = {data}
       />} />
       <Route path = "/login" element={<Login/>}/>
+      <Route path = "/review" element={<Review/>}/>
+
 
     </Routes>
   );
