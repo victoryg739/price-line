@@ -12,7 +12,7 @@ import TextField from "@mui/material/TextField";
 import Avatar from "@mui/material/Avatar";
 import Footer from "../components/Footer";
 
-function Login(props) {
+function Feedback(props) {
  
 
   return (
@@ -31,19 +31,15 @@ function Login(props) {
       
         <Avatar sx={{ width: 100, height: 100 }} src={logo} />
         
-        
-        <Typography component="h1" variant="h5" align="center">
-          Login
-        </Typography>
         <p/>
         
         
           <TextField
             margin="auto"
             required
-            id="username"
-            label="Username"
-            name="username"
+            id="name"
+            label="name"
+            name="name"
             autoFocus
             sx={{width:'20%'}}
           />
@@ -53,13 +49,23 @@ function Login(props) {
           <TextField
             margin="normal"
             required
-            name="password"
-            label="Password"
-            type="password"
-            id="password"
+            name="email"
+            label="email"
+            type="email"
+            id="email"
             sx={{width:'20%'}}
           />
-        
+        <TextField
+            margin="normal"
+            required
+            name="message"
+            label="message"
+            type="message"
+            id="message"
+            sx={{width:'50%', }}
+            multiline
+            
+          />
         
         <Button
           sx={{ mt: 10 }}
@@ -67,14 +73,15 @@ function Login(props) {
           endIcon={<SendIcon />}
           onClick={props.handleOnSubmit}
         >
-          Login
+          Submit
         </Button>
         
-      </Grid>
-      <Footer></Footer>
-
+      
+      
+</Grid>
+<Footer></Footer>
     </div>
   );
 }
 
-export default Login;
+export default Feedback;
