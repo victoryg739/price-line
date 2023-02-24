@@ -2,7 +2,6 @@ import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
 import Toolbar from "@mui/material/Toolbar";
-import Menu from "@mui/material/Menu";
 import Container from "@mui/material/Container";
 import Button from "@mui/material/Button";
 import { useNavigate } from "react-router-dom";
@@ -32,7 +31,7 @@ function ResponsiveAppBar() {
             <Button
               key="Feedback"
               onClick={() => {
-                navigate("/Feedback");
+                navigate("/feedback");
               }}
               sx={{ ml:3, my: 2, color: "white", display: "block" }}
             >
