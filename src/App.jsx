@@ -4,9 +4,12 @@ import Search from "./pages/Search";
 import Login from "./pages/Login";
 import { useState } from "react";
 import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { Route, Routes,useNavigate } from "react-router-dom";
-import axios from 'axios';
+import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import axios from "axios";
 import Feedback from "./pages/Feedback";
+import Admin from "./pages/Admin";
+import AdminFeedback from "./pages/AdminFeedback";
+
 
 function App() {
   const navigate = useNavigate();
@@ -20,17 +23,21 @@ function App() {
     remainingLease: "Any",
   });
 
-  const [data,setData ]= useState(null);
-  const handleOnSubmit = async(event)=>{
-      const response = await axios.post('http://127.0.0.1:8000/api/',filterValue)
-      console.log(response.data.result.records.length);
-      if(response.data.result.records.length === 0){ 
-        alert("No data matching the filtered results found, please try adjusting the filters")
-
-      }else{
-        setData(response.data.result.records);
-        navigate('/search');    
-      }
+  const [data, setData] = useState(null);
+  const handleOnSubmit = async (event) => {
+    const response = await axios.post(
+      "http://127.0.0.1:8000/flat/",
+      filterValue
+    );
+    console.log(response.data.result.records.length);
+    if (response.data.result.records.length === 0) {
+      alert(
+        "No data matching the filtered results found, please try adjusting the filters"
+      );
+    } else {
+      setData(response.data.result.records);
+      navigate("/search");
+    }
   };
   // {    "town": "null",
   //     "flatType": "null",
@@ -74,7 +81,6 @@ function App() {
   };
 
   return (
-    
     <Routes>
       <Route
         path="/"
@@ -87,18 +93,16 @@ function App() {
             floor={filterValue.floor}
             remainingLease={filterValue.remainingLease}
             handleChange={handleChange}
-            handleOnSubmit = {handleOnSubmit}
-       
+            handleOnSubmit={handleOnSubmit}
           />
         }
-       
       />
-      <Route path="/search" element={<Search 
-        data = {data}
-      />} />
-      <Route path = "/login" element={<Login/>}/>
-      <Route path = "/feedback" element ={<Feedback/>} />
+      <Route path="/search" element={<Search data={data} />} />
 
+      <Route path="/login" element={<Login />} />
+      <Route path="/feedback" element={<Feedback />} />
+      <Route path="/admin" element={<Admin />} />
+      <Route path = "/admin/feedback" element ={<AdminFeedback/>}/>
     </Routes>
   );
 }
