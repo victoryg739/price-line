@@ -9,8 +9,7 @@ function Admin() {
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       navigate("/login");
-    } else {
-    }
+    } 
   });
   return (
       <Box>
