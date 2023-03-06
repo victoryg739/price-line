@@ -6,6 +6,7 @@ import TableContainer from "@mui/material/TableContainer";
 import TableHead from "@mui/material/TableHead";
 import TableRow from "@mui/material/TableRow";
 import Paper from "@mui/material/Paper";
+import { Button } from "@mui/material";
 
 function CustomTable(props) {
   return (
@@ -16,11 +17,12 @@ function CustomTable(props) {
             {props.columns.map((column) => (
               <TableCell
                 sx={{ backgroundColor: "black", color: "white" }}
-                align="left"
+                align="center"
               >
                 {column}
               </TableCell>
             ))}
+
             {/* <TableCell>Dessert (100g serving)</TableCell>
           <TableCell align="right">Calories</TableCell>
           <TableCell align="right">Fat&nbsp;(g)</TableCell>
@@ -31,14 +33,20 @@ function CustomTable(props) {
         <TableBody>
           {props.rows.map((row) => (
             <TableRow
-              key={row.name}
+              key={row.id}
               sx={{ "&:last-child td, &:last-child th": { border: 0 } }}
             >
               <TableCell component="th" scope="row">
                 {row.name}
               </TableCell>
-              <TableCell align="left">{row.email}</TableCell>
-              <TableCell align="left">{row.message}</TableCell>
+              <TableCell align="center">{row.email}</TableCell>
+              <TableCell align="center">{row.message}</TableCell>
+
+              <TableCell align="center">
+                <Button sx={{border:"1px solid red"}}color="warning" value={row.id} onClick={props.deleteFeedback}>
+                  Resolve
+                </Button>
+              </TableCell>
             </TableRow>
           ))}
         </TableBody>
