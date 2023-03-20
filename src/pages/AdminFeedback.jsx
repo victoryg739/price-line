@@ -5,6 +5,8 @@ import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CustomTable from "../components/CustomTable";
 import { useState } from "react";
+import Container from "@mui/material/Container";
+import Typography from "@mui/material/Typography";
 
 function AdminFeedback() {
   const [data, setData] = useState([]);
@@ -31,15 +33,36 @@ function AdminFeedback() {
   };
 
   return (
-    <Box>
+    <>
       <NavBar></NavBar>
-      <CustomTable
-        columns={columnName}
-        rows={data}
-        deleteFeedback={deleteFeedback}
-      ></CustomTable>
+
+      <Container>
+        <Typography
+          sx={{mt:6}}
+          component="h1"
+          variant="h2"
+          align="center"
+        >
+          Manage Feedback
+        </Typography>
+        <Typography
+          color="red"
+          fontWeight="bold"
+          component="h1"
+          variant="h6"
+          align="left"
+        >
+         Count: {data.length}
+        </Typography>
+
+        <CustomTable
+          columns={columnName}
+          rows={data}
+          deleteFeedback={deleteFeedback}
+        ></CustomTable>
+      </Container>
       <Footer></Footer>
-    </Box>
+    </>
   );
 }
 

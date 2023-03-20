@@ -9,7 +9,6 @@ import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
 let chooseImage = (id)=>{
-console.log(id);
     if(id > 4){
         id = id - 5;
     }
@@ -82,7 +81,7 @@ function CarouselItem(props) {
         </Grid>
         <Grid item xs={3}>
           <Typography variant="body1">
-            {props.data.flat_model + " sqm"}
+            {props.data.flat_model}
           </Typography>
         </Grid>
         <Grid item xs={3}>

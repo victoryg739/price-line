@@ -10,7 +10,6 @@ import Feedback from "./pages/Feedback";
 import Admin from "./pages/Admin";
 import AdminFeedback from "./pages/AdminFeedback";
 
-
 function App() {
   const navigate = useNavigate();
 
@@ -24,27 +23,24 @@ function App() {
   });
 
   const [data, setData] = useState(null);
+  const [resaleValue, setResaleValue] = useState(null);
+
   const handleOnSubmit = async (event) => {
     const response = await axios.post(
       "http://127.0.0.1:8000/flat/",
       filterValue
     );
-    console.log(response.data.result.records.length);
     if (response.data.result.records.length === 0) {
       alert(
         "No data matching the filtered results found, please try adjusting the filters"
       );
     } else {
       setData(response.data.result.records);
+      console.log(response.data.result.resaleValue);
+      setResaleValue(response.data.result.resaleValue);
       navigate("/search");
     }
   };
-  // {    "town": "null",
-  //     "flatType": "null",
-  //     "flatModel": "null",
-  //     "floorArea": "null",
-  //     "floor": "null",
-  //     "remainingLease": "null",}
 
   const handleChange = (event) => {
     if (event.target.name === "Town") {
@@ -97,12 +93,20 @@ function App() {
           />
         }
       />
-      <Route path="/search" element={<Search data={data} />} />
+      <Route
+        path="/search"
+        element={
+          <Search
+            data={data}
+            resaleValue={resaleValue}
+            town={filterValue.town}
+          />
+        }
+      />
 
       <Route path="/login" element={<Login />} />
       <Route path="/feedback" element={<Feedback />} />
-      <Route path="/admin" element={<Admin />} />
-      <Route path = "/admin/feedback" element ={<AdminFeedback/>}/>
+      <Route path="/admin" element={<AdminFeedback />} />
     </Routes>
   );
 }
