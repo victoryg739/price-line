@@ -11,6 +11,7 @@ import NavBar from "../components/NavBar";
 import Nearby from "../components/Nearby";
 import ResaleChart from "../components/ResaleChart";
 
+
 function Search(props) {
   const [nearbyFood, setNearbyFood] = useState(false);
   const [nearbyTrain, setNearbyTrain] = useState(false);
@@ -22,7 +23,7 @@ function Search(props) {
       url: "https://google-maps-geocoding3.p.rapidapi.com/geocode",
       params: { address: address },
       headers: {
-        "X-RapidAPI-Key": "8241ce43fcmshcc4f521d6fc7793p1694fejsna834180f497f",
+        "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
         "X-RapidAPI-Host": "google-maps-geocoding3.p.rapidapi.com",
       },
     };
@@ -38,7 +39,7 @@ function Search(props) {
         language: "en",
       },
       headers: {
-        "X-RapidAPI-Key": "8241ce43fcmshcc4f521d6fc7793p1694fejsna834180f497f",
+        "X-RapidAPI-Key": process.env.REACT_APP_RAPIDAPI_KEY,
         "X-RapidAPI-Host": "trueway-places.p.rapidapi.com",
       },
     };
