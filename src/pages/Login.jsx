@@ -27,7 +27,7 @@ function Login() {
     try {
       const user = { username: username, password: password };
       const response = await axios.post(
-        "http://127.0.0.1:8000/api/token/",
+        "http://34.143.190.20:8000/api/token/",
         user,
         { headers: { "Content-Type": "application/json" } }
       );

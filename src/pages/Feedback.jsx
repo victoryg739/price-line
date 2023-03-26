@@ -27,7 +27,7 @@ function Feedback() {
     }
     let feedback = { name: name, email: email, message: message };
     const response = await axios.post(
-      "http://127.0.0.1:8000/feedback/",
+      "http://34.143.190.20:8000/feedback/",
       feedback,
       { headers: { "Content-Type": "application/json" } }
     );

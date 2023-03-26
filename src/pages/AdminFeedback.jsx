@@ -8,14 +8,13 @@ import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
 import { useNavigate } from "react-router-dom";
 
-
 function AdminFeedback() {
   const [data, setData] = useState([]);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
 
   useEffect(() => {
     axios
-      .get("http://127.0.0.1:8000/feedback/")
+      .get("http://34.143.190.20:8000/feedback/")
       .then((response) => setData(response.data))
       .catch();
   }, [deleteTrigger]); //need trigger this when deletefeedback is called
@@ -23,7 +22,7 @@ function AdminFeedback() {
   let columnName = ["name", "email", "message", ""];
   let deleteFeedback = (e) => {
     axios
-      .delete(`http://127.0.0.1:8000/feedback/delete/${e.target.value}`)
+      .delete(`http://34.143.190.20:8000/feedback/delete/${e.target.value}`)
       .then((response) => {
         console.log(response.data);
         setDeleteTrigger((prevNum) => prevNum + 1);
@@ -37,7 +36,7 @@ function AdminFeedback() {
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       navigate("/login");
-    } 
+    }
   });
 
   return (
@@ -73,9 +72,7 @@ function AdminFeedback() {
             component="h1"
             variant="h6"
             align="center"
-            sx={{mt:"37%",mb:"37%"}}
-     
-  
+            sx={{ mt: "37%", mb: "37%" }}
           >
             No Feedback available
           </Typography>
