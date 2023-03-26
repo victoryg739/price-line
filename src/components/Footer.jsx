@@ -4,7 +4,7 @@ import { Paper } from '@mui/material'
 import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
 import Logo from '../assets/logo.png';
-import { Navigate, useNavigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 
 function Footer() {
     const navigate = useNavigate();
@@ -21,9 +21,6 @@ function Footer() {
         }}
       >
           <img style ={{cursor:"pointer"}} onClick ={()=>{navigate("/")}} src={Logo} width="50" height="50" alt="LOGO" />
-        {/* <Link href="/">
-          <Image priority src="/Logo.svg" width={75} height={30} alt="Logo" />
-        </Link> */}
       </Box>
 
       <Box

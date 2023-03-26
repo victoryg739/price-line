@@ -1,5 +1,5 @@
 import React from "react";
-import { Paper, Button, Box } from "@mui/material";
+import { Paper } from "@mui/material";
 import homeImage1 from "../assets/home1.jpg";
 import homeImage2 from "../assets/home2.jpg";
 import homeImage3 from "../assets/home3.jpg";
@@ -12,16 +12,16 @@ let chooseImage = (id)=>{
     if(id > 4){
         id = id - 5;
     }
-    if(id ==  0){
+    if(id ===  0){
         return homeImage1;
     }
-    else if(id == 1){
+    else if(id === 1){
         return homeImage2;
     }
-    else if(id == 2){
+    else if(id === 2){
         return homeImage3;
     }
-    else if(id == 3){
+    else if(id === 3){
         return homeImage4;
     }else{
         return homeImage5;

@@ -1,12 +1,13 @@
 import { useEffect } from "react";
 import axios from "axios";
-import { Box } from "@mui/material";
 import NavBar from "../components/NavBar";
 import Footer from "../components/Footer";
 import CustomTable from "../components/CustomTable";
 import { useState } from "react";
 import Container from "@mui/material/Container";
 import Typography from "@mui/material/Typography";
+import { useNavigate } from "react-router-dom";
+
 
 function AdminFeedback() {
   const [data, setData] = useState([]);
@@ -32,34 +33,53 @@ function AdminFeedback() {
       });
   };
 
+  const navigate = useNavigate();
+  useEffect(() => {
+    if (localStorage.getItem("access_token") === null) {
+      navigate("/login");
+    } 
+  });
+
   return (
     <>
       <NavBar></NavBar>
 
       <Container>
-        <Typography
-          sx={{mt:6}}
-          component="h1"
-          variant="h2"
-          align="center"
-        >
+        <Typography sx={{ mt: 6 }} component="h1" variant="h2" align="center">
           Manage Feedback
         </Typography>
-        <Typography
-          color="red"
-          fontWeight="bold"
-          component="h1"
-          variant="h6"
-          align="left"
-        >
-         Count: {data.length}
-        </Typography>
+        {data.length ? (
+          <>
+            <Typography
+              color="red"
+              fontWeight="bold"
+              component="h1"
+              variant="h6"
+              align="left"
+            >
+              Count: {data.length}
+            </Typography>
 
-        <CustomTable
-          columns={columnName}
-          rows={data}
-          deleteFeedback={deleteFeedback}
-        ></CustomTable>
+            <CustomTable
+              columns={columnName}
+              rows={data}
+              deleteFeedback={deleteFeedback}
+            ></CustomTable>
+          </>
+        ) : (
+          <Typography
+            color="black"
+            fontWeight="bold"
+            component="h1"
+            variant="h6"
+            align="center"
+            sx={{mt:"37%",mb:"37%"}}
+     
+  
+          >
+            No Feedback available
+          </Typography>
+        )}
       </Container>
       <Footer></Footer>
     </>

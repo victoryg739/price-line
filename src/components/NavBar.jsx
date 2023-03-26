@@ -19,7 +19,7 @@ function ResponsiveAppBar() {
     } else {
       setIsLogin(true);
     }
-  });
+  }, []);
 
   return (
     <AppBar style={{ background: "#659DBD", position: "static" }}>
@@ -35,39 +35,54 @@ function ResponsiveAppBar() {
             height="100"
             alt="LOGO"
           />
-
           <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
-            <Button
-              key="Feedback"
-              onClick={() => {
-                navigate("/feedback");
-              }}
-              sx={{ ml: 3, my: 2, color: "white", display: "block" }}
-            >
-              Feedback
-            </Button>
-          </Box>
-
-          <Box>
             {isLogin ? (
               <Button
+                key="Feedback"
                 onClick={() => {
-                  localStorage.clear();
-                  navigate("/");
+                  navigate("/admin");
                 }}
-                variant="contained"
+                sx={{ ml: 3, my: 2, color: "white", display: "block" }}
               >
-                Admin Logout
+                Manage Feedback
               </Button>
             ) : (
               <Button
+                key="Feedback"
                 onClick={() => {
-                  navigate("/login");
+                  navigate("/feedback");
                 }}
-                variant="contained"
+                sx={{ ml: 3, my: 2, color: "white", display: "block" }}
               >
-                Admin Login
+                Feedback
               </Button>
+            )}
+          </Box>
+          <Box>
+            {isLogin ? (
+              <>
+                <Button
+                  onClick={() => {
+                    localStorage.clear();
+                    navigate("/");
+                    alert("Successfully Logout");
+                  }}
+                  variant="contained"
+                >
+                  Admin Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                <Button
+                  onClick={() => {
+                    navigate("/login");
+                  }}
+                  variant="contained"
+                >
+                  Admin Login
+                </Button>
+              </>
             )}
           </Box>
         </Toolbar>

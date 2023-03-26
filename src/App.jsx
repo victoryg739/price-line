@@ -3,11 +3,9 @@ import Home from "./pages/Home";
 import Search from "./pages/Search";
 import Login from "./pages/Login";
 import { useState } from "react";
-import Select, { SelectChangeEvent } from "@mui/material/Select";
-import { BrowserRouter, Route, Routes, useNavigate } from "react-router-dom";
+import { Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Feedback from "./pages/Feedback";
-import Admin from "./pages/Admin";
 import AdminFeedback from "./pages/AdminFeedback";
 
 function App() {

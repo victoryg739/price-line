@@ -15,7 +15,6 @@ import ResaleChart from "../components/ResaleChart";
 function Search(props) {
   const [nearbyFood, setNearbyFood] = useState(false);
   const [nearbyTrain, setNearbyTrain] = useState(false);
-  const [nearbyMarket, setNearbyMarket] = useState(0);
 
   const findCoordinates = (address) => {
     return {

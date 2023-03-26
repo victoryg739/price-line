@@ -1,15 +1,11 @@
 import { Paper } from "@mui/material";
-import React, { useEffect } from "react";
+import React from "react";
 import Grid from "@mui/material/Grid";
 import Typography from "@mui/material/Typography";
 import RestaurantIcon from "@mui/icons-material/Restaurant";
-import TrainTwoToneIcon from "@mui/icons-material/TrainTwoTone";
 import LocalGroceryStoreTwoToneIcon from "@mui/icons-material/LocalGroceryStoreTwoTone";
-import Box from "@mui/material/Box";
 import Link from "@mui/material/Link";
-import { Navigate, useNavigate } from "react-router-dom";
 function Nearby(props) {
-  const navigate = useNavigate();
   return (
     <Paper>
       <Grid container sx={{ m: 5, p: 5 }}>
@@ -57,16 +53,5 @@ function Nearby(props) {
   );
 }
 
-//   return (
-//     <Paper>
-//       <Grid container sx={{ m: 5 }} rowSpacing={2}>
-//         {console.log("123 " +props.food)}
-//         {console.log("1" + Array.isArray(props.food))}
-//         {chec}
-
-//       </Grid>
-//     </Paper>
-//   );
-// }
 
 export default Nearby;
