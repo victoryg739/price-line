@@ -25,7 +25,7 @@ function App() {
 
   const handleOnSubmit = async (event) => {
     const response = await axios.post(
-      "http://34.143.190.20:8000/flat/",
+      "https://34.143.190.20:8000/flat/",
       filterValue,{ withCredentials: true }
     );
     if (response.data.result.records.length === 0) {
