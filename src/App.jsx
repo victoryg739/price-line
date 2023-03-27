@@ -22,11 +22,18 @@ function App() {
 
   const [data, setData] = useState(null);
   const [resaleValue, setResaleValue] = useState(null);
+  const agent = new https.Agent({
+    rejectUnauthorized: false,
+  });
 
   const handleOnSubmit = async (event) => {
     const response = await axios.post(
       "https://34.143.190.20:8000/flat/",
-      filterValue,{ withCredentials: true }
+      filterValue,
+      {
+        httpsAgent: agent,
+        withCredentials: true,
+      }
     );
     if (response.data.result.records.length === 0) {
       alert(
