@@ -1,3 +1,9 @@
+/**
+ * React component for managing feedback.
+ *
+ * @returns {JSX.Element} Component markup.
+ */
+
 import { useEffect } from "react";
 import axios from "axios";
 import NavBar from "../components/NavBar";
@@ -12,17 +18,25 @@ function AdminFeedback() {
   const [data, setData] = useState([]);
   const [deleteTrigger, setDeleteTrigger] = useState(0);
 
+  /**
+   * Fetches feedback data from the API and updates state.
+   */
   useEffect(() => {
     axios
-      .get("http://34.143.190.20:8000/feedback/")
+      .get("http://localhost:8000/feedback/")
       .then((response) => setData(response.data))
       .catch();
   }, [deleteTrigger]); //need trigger this when deletefeedback is called
 
   let columnName = ["name", "email", "message", ""];
+  /**
+   * Deletes a feedback item from the API and updates state.
+   *
+   * @param {Object} e - The event object.
+   */
   let deleteFeedback = (e) => {
     axios
-      .delete(`http://34.143.190.20:8000/feedback/delete/${e.target.value}`)
+      .delete(`http://localhost:8000/feedback/delete/${e.target.value}`)
       .then((response) => {
         console.log(response.data);
         setDeleteTrigger((prevNum) => prevNum + 1);
@@ -33,11 +47,19 @@ function AdminFeedback() {
   };
 
   const navigate = useNavigate();
+
+  /**
+   * Redirects to login page if user is not authenticated.
+   */
+  /**
+   * Redirects to login page if user is not authenticated.
+   */
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       navigate("/login");
     }
   });
+
 
   return (
     <>

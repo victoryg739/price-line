@@ -1,3 +1,10 @@
+/**
+ResaleChart component renders a bar chart using Recharts library to display the predicted resale value of a product.
+@param {Object} props - The props object containing the predicted resale value of a product.
+@param {number} props.resaleValue - The predicted resale value of the product.
+@returns {JSX.Element} - The JSX element for the ResaleChart component.
+*/
+
 import {
   BarChart,
   XAxis,

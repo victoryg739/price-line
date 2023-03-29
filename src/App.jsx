@@ -1,3 +1,20 @@
+/**
+
+The main App component of the Resale Property Finder web app. It defines the routing and renders the respective pages based on the URL path.
+@return {JSX.Element} The rendered React element
+@constructor
+
+  
+  
+  State hook to store the current filter values for the property search
+  @type {Object}
+  @property {string} town - The selected town for the property search
+  @property {string} flatType - The selected flat type for the property search
+  @property {string} flatModel - The selected flat model for the property search
+  @property {string} floorArea - The selected floor area for the property search
+  @property {string} floor - The selected floor range for the property search
+  @property {string} remainingLease - The selected remaining lease for the property search
+  */
 import React from "react";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
@@ -26,7 +43,7 @@ function App() {
 
   const handleOnSubmit = async (event) => {
     const response = await axios.post(
-      "http://34.168.93.33:8000/flat/",
+      "http://localhost:8000/flat/",
       filterValue
     );
     if (response.data.result.records.length === 0) {

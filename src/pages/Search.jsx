@@ -1,3 +1,13 @@
+/**
+
+Search page component that displays most recent sales, nearby amenities, historical prices and AI predicted value.
+@param {object} props - The properties object.
+@param {array} props.data - Array of objects that contains data of most recent sales.
+@param {number} props.resaleValue - The AI predicted value.
+@param {string} props.town - The name of the town to search for.
+@returns {JSX.Element} - Returns the JSX element.
+**/
+
 import { Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/system";
@@ -15,7 +25,12 @@ import ResaleChart from "../components/ResaleChart";
 function Search(props) {
   const [nearbyFood, setNearbyFood] = useState(false);
   const [nearbyTrain, setNearbyTrain] = useState(false);
+  /**
 
+  Function that generates the RapidAPI request for finding the coordinates of the town.
+  @param {string} address - The address of the town.
+  @returns {object} - Returns the RapidAPI request object.
+  */
   const findCoordinates = (address) => {
     return {
       method: "GET",
@@ -27,6 +42,15 @@ function Search(props) {
       },
     };
   };
+
+    /**
+
+  Function that generates the RapidAPI request for finding nearby amenities.
+  @param {string} coordinate - The latitude and longitude of the town.
+  @param {string} type - The type of amenity to search for.
+  @param {number} range - The search radius in meters.
+  @returns {object} - Returns the RapidAPI request object.
+  */
   const findNearby = (coordinate, type, range) => {
     return {
       method: "GET",

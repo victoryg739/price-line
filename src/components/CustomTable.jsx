@@ -1,3 +1,11 @@
+/**
+ * A custom table component that displays data in rows and columns format.
+ * @component
+ * @param {Object} props - The props object containing data to be displayed in the table.
+ * @param {Array} props.columns - The columns to display in the table.
+ * @param {Array} props.rows - The rows to display in the table.
+ * @param {Function} props.deleteFeedback - The function to call when the "Resolve" button is clicked.
+ **/
 import * as React from "react";
 import Table from "@mui/material/Table";
 import TableBody from "@mui/material/TableBody";

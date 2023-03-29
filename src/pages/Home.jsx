@@ -1,3 +1,18 @@
+/**
+
+Home page component that displays a form with dropdowns and a button to submit user's inputs for getting the value of their HDB flats.
+@param {Object} props - The properties object of the component.
+@param {string} props.town - The state value for town dropdown.
+@param {string} props.flatType - The state value for flat type dropdown.
+@param {string} props.flatModel - The state value for flat model dropdown.
+@param {string} props.floorArea - The state value for floor area dropdown.
+@param {string} props.floor - The state value for floor dropdown.
+@param {string} props.remainingLease - The state value for remaining lease dropdown.
+@param {Function} props.handleChange - The function that handles dropdown change event.
+@param {Function} props.handleOnSubmit - The function that handles the click event of the submit button.
+@returns {JSX.Element} - Returns the JSX component that displays the form with dropdowns and a button.
+*/
+
 import React from "react";
 import NavBar from "../components/NavBar";
 import DropDown from "../components/DropDown";

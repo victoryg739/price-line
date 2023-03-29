@@ -1,3 +1,22 @@
+/**
+ * AlertDialog.js
+ *
+ * AlertDialog component is a reusable dialog component that uses Material-UI components
+ * to create a customizable alert dialog. This dialog can be used to display important
+ * information to the user and requires a user action to be dismissed.
+ *
+ * The component uses Material-UI Dialog components such as:
+ * - Dialog
+ * - DialogTitle
+ * - DialogContent
+ * - DialogContentText
+ * - DialogActions
+ * - Button
+ *
+ * @module AlertDialog
+ * @exports AlertDialog
+ */
+
 import React from 'react'
 import Dialog from '@mui/material/Dialog';
 import DialogActions from '@mui/material/DialogActions';

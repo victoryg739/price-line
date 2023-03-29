@@ -1,3 +1,9 @@
+/**
+ * A responsive app bar component that displays the logo, feedback button,
+ * and admin login/logout button.
+ *
+ * @return {JSX.Element} The responsive app bar.
+ */
 import * as React from "react";
 import AppBar from "@mui/material/AppBar";
 import Box from "@mui/material/Box";
@@ -13,6 +19,11 @@ import logo from "../assets/logo.png";
 function ResponsiveAppBar() {
   const navigate = useNavigate();
   const [isLogin, setIsLogin] = useState(false);
+
+  /**
+   * Sets the isLogin state to true or false depending on whether there
+   * is an access token stored in local storage.
+   */
   useEffect(() => {
     if (localStorage.getItem("access_token") === null) {
       setIsLogin(false);

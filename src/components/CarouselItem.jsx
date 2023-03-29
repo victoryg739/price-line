@@ -1,3 +1,18 @@
+/**
+ * Represents a carousel item component that displays information about a HDB resale flat.
+ * @component
+ * @param {Object} props - The props object containing information about the HDB resale flat.
+ * @param {number} props.id - The id of the carousel item.
+ * @param {Object} props.data - The data object containing information about the HDB resale flat.
+ * @param {string} props.data.block - The block number of the HDB resale flat.
+ * @param {string} props.data.street_name - The street name of the HDB resale flat.
+ * @param {string} props.data.remaining_lease - The remaining lease of the HDB resale flat.
+ * @param {string} props.data.flat_type - The type of HDB flat.
+ * @param {number} props.data.floor_area_sqm - The floor area of the HDB resale flat in square meters.
+ * @param {string} props.data.flat_model - The model of the HDB resale flat.
+ * @param {string} props.data.month - The month in which the HDB resale flat was posted.
+ * @param {number} props.data.resale_price - The resale price of the HDB flat.
+*/
 import React from "react";
 import { Paper } from "@mui/material";
 import homeImage1 from "../assets/home1.jpg";
@@ -8,6 +23,13 @@ import homeImage5 from "../assets/home5.jpg";
 import { Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 
+/**
+ * Determines which home image to display based on the id.
+ *
+ * @function
+ * @param {number} id - The id of the carousel item.
+ * @returns {string} - The image path of the home to display.
+ */
 let chooseImage = (id)=>{
     if(id > 4){
         id = id - 5;

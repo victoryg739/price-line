@@ -1,3 +1,18 @@
+/**
+ * Nearby component renders a list of nearby restaurants and supermarkets.
+ *
+ * @param {Object} props - Component props
+ * @param {Array<Object>} props.food - An array of objects containing information about nearby restaurants.
+ * @param {string} props.food[].name - The name of the restaurant.
+ * @param {string} props.food[].address - The address of the restaurant.
+ * @param {string} props.food[].phone_number - The phone number of the restaurant.
+ * @param {string} props.food[].website - The website of the restaurant.
+ * @param {Array<Object>} props.train - An array of objects containing information about nearby supermarkets.
+ * @param {string} props.train[].name - The name of the supermarket.
+ * @param {string} props.train[].address - The address of the supermarket.
+ * @returns {JSX.Element} - Rendered component.
+ */
+
 import { Paper } from "@mui/material";
 import React from "react";
 import Grid from "@mui/material/Grid";

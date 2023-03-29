@@ -5,7 +5,9 @@ import Container from "@mui/material/Container";
 import Typography from '@mui/material/Typography';
 import Logo from '../assets/logo.png';
 import { useNavigate } from 'react-router-dom';
-
+/**
+ * A footer component that displays the logo and the year of the application.
+ **/
 function Footer() {
     const navigate = useNavigate();
   return (

@@ -1,3 +1,8 @@
+/**
+
+A component representing the login page for admin users
+@returns {JSX.Element} The JSX code representing the login page
+*/
 import React from "react";
 import NavBar from "../components/NavBar";
 
@@ -22,12 +27,16 @@ function Login() {
   const [errorAuthenticate, seterrorAuthenticate] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
+  /**
 
+  Function to handle login for admin user
+  @param {object} event - The event object
+  */
   let handleAdminLogin = async (event) => {
     try {
       const user = { username: username, password: password };
       const response = await axios.post(
-        "http://34.143.190.20:8000/api/token/",
+        "http://localhost:8000/api/token/",
         user,
         { headers: { "Content-Type": "application/json" } }
       );

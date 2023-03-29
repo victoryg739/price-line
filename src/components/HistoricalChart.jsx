@@ -1,3 +1,8 @@
+/**
+ * A reusable component that renders a responsive area chart using Recharts library.
+ * @component
+ **/
+
 import React from "react";
 import {
   AreaChart,
@@ -10,6 +15,13 @@ import {
 } from "recharts";
 
 export default function Chart(props) {
+  /**
+   * Renders a responsive area chart.
+   * @method
+   * @param {object} props - The props object containing data to be plotted.
+   * @param {Array<object>} props.data - The data to be plotted on the chart.
+   * @returns {JSX.Element} - A responsive area chart.
+   */
   return (
     <ResponsiveContainer width="100%" height={400}>
       <AreaChart

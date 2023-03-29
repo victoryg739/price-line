@@ -1,3 +1,9 @@
+/**
+
+Component for managing feedback given by users
+@component
+*/
+
 import NavBar from "../components/NavBar";
 import { Grid } from "@mui/material";
 import { Button } from "@mui/material";
