@@ -26,14 +26,14 @@ function Feedback() {
   const [success, setSuccess] = useState(false);
 
   const handleSumbitFeedback = async () => {
-    if (!isEmailValid) {
+    if (!isEmailValid || name == "" || message == "") {
       setError(true);
       setSuccess(false);
       return;
     }
     let feedback = { name: name, email: email, message: message };
     const response = await axios.post(
-      "http://34.143.190.20:8000/feedback/",
+      "http://localhost:8000/feedback/",
       feedback,
       { headers: { "Content-Type": "application/json" } }
     );
@@ -61,128 +61,128 @@ function Feedback() {
 
   return (
     <>
-    <NavBar></NavBar>
+      <NavBar></NavBar>
 
-    <Container>
-
-      <Grid container sx={{ mt: 5, mb:10,p: 5 }}>
-        <Grid item xs={7} sx={{ pr: 10 }}>
-          <Typography
-            color="blue"
-            fontWeight="bold"
-            component="h1"
-            variant="h2"
-            align="center"
-          >
-            Customer Feedback
-          </Typography>
-          <Typography sx={{ mt: 5 }} component="h1" variant="h6" align="left">
-            At Price Line, we believe that feedback is the cornerstone of growth
-            and improvement. We value the opinions of our users and strive to
-            create a platform that meets their needs and exceeds their
-            expectations. 
-          </Typography>
-          <Typography component="h1" variant="h6" align="left">
-            If you have any feedback for us, please do not hesitate to reach
-            out. We welcome all kinds of feedback, we will use it to improve our services. We are committed to
-            providing a user-friendly experience that meets the needs of our
-            users, and your feedback is crucial to achieving this goal.
-          </Typography>
+      <Container>
+        <Grid container sx={{ mt: 5, mb: 10, p: 5 }}>
+          <Grid item xs={7} sx={{ pr: 10 }}>
+            <Typography
+              color="blue"
+              fontWeight="bold"
+              component="h1"
+              variant="h2"
+              align="center"
+            >
+              Customer Feedback
+            </Typography>
+            <Typography sx={{ mt: 5 }} component="h1" variant="h6" align="left">
+              At Price Line, we believe that feedback is the cornerstone of
+              growth and improvement. We value the opinions of our users and
+              strive to create a platform that meets their needs and exceeds
+              their expectations.
+            </Typography>
+            <Typography component="h1" variant="h6" align="left">
+              If you have any feedback for us, please do not hesitate to reach
+              out. We welcome all kinds of feedback, we will use it to improve
+              our services. We are committed to providing a user-friendly
+              experience that meets the needs of our users, and your feedback is
+              crucial to achieving this goal.
+            </Typography>
+          </Grid>
+          <Grid item xs={5}>
+            <img
+              src={feedbackImage}
+              alt="homeImage"
+              style={{ width: "100%" }}
+            />
+          </Grid>
         </Grid>
-        <Grid item xs={5}>
-          <img
-            src={feedbackImage}
-            alt="homeImage"
-            style={{ width: "100%" }}
-          />
-        </Grid>
-      </Grid>
-      <Grid
-        container
-        direction="column"
-        justifyContent="space-evenly"
-        alignItems="center"
-        sx={{border:1 ,borderRadius:5}}
-      >
-        <Grid item>
-        <Typography
-            fontWeight="500"
-            component="h1"
-            variant="h4"
-            sx={{mt:3}}
-            align="center"
-          >Leave a message</Typography>
-        </Grid>
-        <Grid item>
-          <TextField
-            margin="auto"
-            required
-            id="name"
-            label="name"
-            name="name"
-            value={name}
-            onChange={(e) => setName(e.target.value)}
-            autoFocus
-            sx={{ minWidth: 400, mt: 5 }}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            margin="normal"
-            required
-            name="email"
-            label="email"
-            type="email"
-            error={!isEmailValid}
-            helperText={
-              !isEmailValid ? "Please enter a valid email address" : ""
-            }
-            id="email"
-            value={email}
-            onChange={handleEmailChange}
-            sx={{ minWidth: 400, mt: 5 }}
-          />
-        </Grid>
-        <Grid item>
-          <TextField
-            margin="normal"
-            required
-            name="message"
-            label="message"
-            type="message"
-            id="message"
-            rows={8}
-            value={message}
-            onChange={(e) => setMessage(e.target.value)}
-            sx={{ minWidth: 700, mt: 5 }}
-            multiline
-          />
-        </Grid>
-
-        <Button
-          sx={{ mt: 6, mb:6 }}
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={handleSumbitFeedback}
+        <Grid
+          container
+          direction="column"
+          justifyContent="space-evenly"
+          alignItems="center"
+          sx={{ border: 1, borderRadius: 5 }}
         >
-          Submit
-        </Button>
-        {success && (
-          <Alert sx={{ mt: 5,mb:5 }} severity="success">
-            Feedback has been successfully sent!{" "}
-          </Alert>
-        )}
+          <Grid item>
+            <Typography
+              fontWeight="500"
+              component="h1"
+              variant="h4"
+              sx={{ mt: 3 }}
+              align="center"
+            >
+              Leave a message
+            </Typography>
+          </Grid>
+          <Grid item>
+            <TextField
+              margin="auto"
+              required
+              id="name"
+              label="name"
+              name="name"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              autoFocus
+              sx={{ minWidth: 400, mt: 5 }}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              margin="normal"
+              required
+              name="email"
+              label="email"
+              type="email"
+              error={!isEmailValid}
+              helperText={
+                !isEmailValid ? "Please enter a valid email address" : ""
+              }
+              id="email"
+              value={email}
+              onChange={handleEmailChange}
+              sx={{ minWidth: 400, mt: 5 }}
+            />
+          </Grid>
+          <Grid item>
+            <TextField
+              margin="normal"
+              required
+              name="message"
+              label="message"
+              type="message"
+              id="message"
+              rows={8}
+              value={message}
+              onChange={(e) => setMessage(e.target.value)}
+              sx={{ minWidth: 700, mt: 5 }}
+              multiline
+            />
+          </Grid>
 
-        {error && (
-          <Alert sx={{ mt: 5,mb:5}} severity="error">
-            Error sending feedback. Try again!{" "}
-          </Alert>
-        )}
-      </Grid>
-      
-    </Container>
-    <Footer></Footer>
+          <Button
+            sx={{ mt: 6, mb: 6 }}
+            variant="contained"
+            endIcon={<SendIcon />}
+            onClick={handleSumbitFeedback}
+          >
+            Submit
+          </Button>
+          {success && (
+            <Alert sx={{ mt: 5, mb: 5 }} severity="success">
+              Feedback has been successfully sent!{" "}
+            </Alert>
+          )}
 
+          {error && (
+            <Alert sx={{ mt: 5, mb: 5 }} severity="error">
+              Error sending feedback. Try again!{" "}
+            </Alert>
+          )}
+        </Grid>
+      </Container>
+      <Footer></Footer>
     </>
   );
 }

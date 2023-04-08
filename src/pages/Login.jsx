@@ -20,8 +20,6 @@ import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 
-
-
 function Login() {
   const navigate = useNavigate();
   const [errorAuthenticate, seterrorAuthenticate] = useState(false);
@@ -34,6 +32,10 @@ function Login() {
   */
   let handleAdminLogin = async (event) => {
     try {
+      if (username === "" || password === "") {
+        seterrorAuthenticate(true);
+        return;
+      }
       const user = { username: username, password: password };
       const response = await axios.post(
         "http://localhost:8000/api/token/",
@@ -43,7 +45,7 @@ function Login() {
       console.log("response");
       if (response.status === 200) {
         // Initialize the access & refresh token in localstorage.
-        localStorage.clear();  
+        localStorage.clear();
         localStorage.setItem("access_token", response.data.access);
         localStorage.setItem("refresh_token", response.data.refresh);
         navigate("/admin");

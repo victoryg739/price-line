@@ -103,6 +103,14 @@ function Search(props) {
       });
   }, []);
 
+  // Sort the month from ascending order
+  props.data.sort(function(a, b) {
+    let dateA = new Date(a.month);
+    let dateB = new Date(b.month);
+    return dateA - dateB;
+  });
+
+
   return (
     <Box>
       <NavBar></NavBar>
@@ -136,6 +144,7 @@ function Search(props) {
             <Typography align="center" variant="h5" color="black" sx={{ m: 5 }}>
               AI Predicted Value
             </Typography>
+            {console.log(props.data)}
             <ResaleChart resaleValue={props.resaleValue}></ResaleChart>
           </Grid>
         </Grid>
