@@ -18,13 +18,19 @@ The main App component of the Resale Property Finder web app. It defines the rou
 import React from "react";
 import Home from "./pages/Home";
 import Search from "./pages/Search";
-import Login from "./pages/Login";
+import AdminLogin from "./pages/AdminLogin";
 import { useState } from "react";
 import { Route, Routes, useNavigate } from "react-router-dom";
 import axios from "axios";
 import Feedback from "./pages/Feedback";
 import AdminFeedback from "./pages/AdminFeedback";
-
+import Calculator from "./pages/Calculator";
+import UserLogin from "./pages/UserLogin";
+import UserRegister from "./pages/UserRegister";
+import BuyResale from "./pages/BuyResale";
+import SellResale from "./pages/SellResale";
+import ManageResale from "./pages/ManageResale";
+import BuyResaleId from "./pages/BuyResaleId";
 
 function App() {
   const navigate = useNavigate();
@@ -42,14 +48,9 @@ function App() {
   const [resaleValue, setResaleValue] = useState(null);
 
   const handleOnSubmit = async (event) => {
-    const response = await axios.post(
-      "http://localhost:8000/flat/",
-      filterValue
-    );
+    const response = await axios.post("http://localhost:8000/flat/", filterValue);
     if (response.data.result.records.length === 0) {
-      alert(
-        "No data matching the filtered results found, please try adjusting the filters"
-      );
+      alert("No data matching the filtered results found, please try adjusting the filters");
     } else {
       setData(response.data.result.records);
       console.log(response.data.result.resaleValue);
@@ -94,6 +95,12 @@ function App() {
 
   return (
     <Routes>
+      <Route path="/resale/buy" element={<BuyResale />} />
+      <Route path="/resale/buy/:id" element={<BuyResaleId />} />
+
+      <Route path="/resale/sell" element={<SellResale />} />
+      <Route path="/resale/manage" element={<ManageResale />} />
+
       <Route
         path="/"
         element={
@@ -109,18 +116,11 @@ function App() {
           />
         }
       />
-      <Route
-        path="/search"
-        element={
-          <Search
-            data={data}
-            resaleValue={resaleValue}
-            town={filterValue.town}
-          />
-        }
-      />
-
-      <Route path="/login" element={<Login />} />
+      <Route path="/search" element={<Search data={data} resaleValue={resaleValue} town={filterValue.town} />} />
+      <Route path="calculator" element={<Calculator />} />
+      <Route path="/user-login" element={<UserLogin />} />
+      <Route path="/user-register" element={<UserRegister />} />
+      <Route path="/admin-login" element={<AdminLogin />} />
       <Route path="/feedback" element={<Feedback />} />
       <Route path="/admin" element={<AdminFeedback />} />
     </Routes>

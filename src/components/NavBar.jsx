@@ -18,22 +18,31 @@ import logo from "../assets/logo.png";
 
 function ResponsiveAppBar() {
   const navigate = useNavigate();
-  const [isLogin, setIsLogin] = useState(false);
-
+  const [isAdminLogin, setIsAdminLogin] = useState(false);
+  const [isUserLogin, setIsUserLogin] = useState(false);
   /**
    * Sets the isLogin state to true or false depending on whether there
    * is an access token stored in local storage.
    */
+
   useEffect(() => {
-    if (localStorage.getItem("access_token") === null) {
-      setIsLogin(false);
+    if (localStorage.getItem("admin_token") === null) {
+      setIsAdminLogin(false);
     } else {
-      setIsLogin(true);
+      setIsAdminLogin(true);
+    }
+  }, []);
+
+  useEffect(() => {
+    if (localStorage.getItem("user_token") === null) {
+      setIsUserLogin(false);
+    } else {
+      setIsUserLogin(true);
     }
   }, []);
 
   return (
-    <AppBar style={{ background: "#659DBD", position: "static" }}>
+    <AppBar style={{ background: "#4A94DE", position: "static" }}>
       <Container maxWidth="xl">
         <Toolbar disableGutters>
           <img
@@ -47,30 +56,70 @@ function ResponsiveAppBar() {
             alt="LOGO"
           />
           <Box sx={{ flexGrow: 1, display: { xs: "flex" } }}>
-            {isLogin ? (
+            {isAdminLogin ? (
               <Button
                 key="Feedback"
                 onClick={() => {
                   navigate("/admin");
                 }}
-                sx={{ ml: 3, my: 2, color: "white", display: "block" }}
+                sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none" }}
               >
                 Manage Feedback
               </Button>
             ) : (
-              <Button
-                key="Feedback"
-                onClick={() => {
-                  navigate("/feedback");
-                }}
-                sx={{ ml: 3, my: 2, color: "white", display: "block" }}
-              >
-                Feedback
-              </Button>
+              <>
+                <Button
+                  key="Buy"
+                  onClick={() => {
+                    navigate("/resale/buy");
+                  }}
+                  sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none", fontSize: 16 }}
+                >
+                  Buy
+                </Button>
+                <Button
+                  key="Sell"
+                  onClick={() => {
+                    navigate("/resale/sell");
+                  }}
+                  sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none", fontSize: 16 }}
+                >
+                  Sell
+                </Button>
+                {isUserLogin && (
+                  <Button
+                    key="Manage Listings"
+                    onClick={() => {
+                      navigate("/resale/manage");
+                    }}
+                    sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none", fontSize: 16 }}
+                  >
+                    Manage Listings
+                  </Button>
+                )}
+                <Button
+                  key="Calculator"
+                  onClick={() => {
+                    navigate("/calculator");
+                  }}
+                  sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none", fontSize: 16 }}
+                >
+                  Calculator
+                </Button>
+                <Button
+                  key="Feedback"
+                  onClick={() => {
+                    navigate("/feedback");
+                  }}
+                  sx={{ ml: 3, my: 2, color: "white", display: "block", textTransform: "none", fontSize: 16 }}
+                >
+                  Feedback
+                </Button>
+              </>
             )}
           </Box>
           <Box>
-            {isLogin ? (
+            {isAdminLogin || isUserLogin ? (
               <>
                 <Button
                   onClick={() => {
@@ -80,18 +129,18 @@ function ResponsiveAppBar() {
                   }}
                   variant="contained"
                 >
-                  Admin Logout
+                  Logout
                 </Button>
               </>
             ) : (
               <>
                 <Button
                   onClick={() => {
-                    navigate("/login");
+                    navigate("/user-login");
                   }}
                   variant="contained"
                 >
-                  Admin Login
+                  Login
                 </Button>
               </>
             )}

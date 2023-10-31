@@ -8,7 +8,7 @@ Search page component that displays most recent sales, nearby amenities, histori
 @returns {JSX.Element} - Returns the JSX element.
 **/
 
-import { Container, Typography } from "@mui/material";
+import { Button, Container, Typography } from "@mui/material";
 import Grid from "@mui/material/Grid";
 import { Box } from "@mui/system";
 import axios from "axios";
@@ -20,9 +20,11 @@ import HistoricalChart from "../components/HistoricalChart";
 import NavBar from "../components/NavBar";
 import Nearby from "../components/Nearby";
 import ResaleChart from "../components/ResaleChart";
-
+import { useNavigate } from "react-router-dom";
 
 function Search(props) {
+  const navigate = useNavigate();
+
   const [nearbyFood, setNearbyFood] = useState(false);
   const [nearbyTrain, setNearbyTrain] = useState(false);
   /**
@@ -43,7 +45,7 @@ function Search(props) {
     };
   };
 
-    /**
+  /**
 
   Function that generates the RapidAPI request for finding nearby amenities.
   @param {string} coordinate - The latitude and longitude of the town.
@@ -72,8 +74,7 @@ function Search(props) {
     axios
       .request(findCoordinates(props.town + " Singapore"))
       .then(function (response) {
-        let coordinate =
-          response.data["latitude"] + "," + response.data["longitude"];
+        let coordinate = response.data["latitude"] + "," + response.data["longitude"];
         console.log(coordinate);
 
         let type = "restaurant";
@@ -104,12 +105,11 @@ function Search(props) {
   }, []);
 
   // Sort the month from ascending order
-  props.data.sort(function(a, b) {
+  props.data.sort(function (a, b) {
     let dateA = new Date(a.month);
     let dateB = new Date(b.month);
     return dateA - dateB;
   });
-
 
   return (
     <Box>
@@ -142,10 +142,19 @@ function Search(props) {
           </Grid>
           <Grid item xs={4}>
             <Typography align="center" variant="h5" color="black" sx={{ m: 5 }}>
-              AI Predicted Value
+              AI Price Suggestion
             </Typography>
             {console.log(props.data)}
             <ResaleChart resaleValue={props.resaleValue}></ResaleChart>
+          </Grid>
+          <Grid item xs={9}></Grid> 
+          <Grid mt={6} item xs={3}>
+            <Button
+              variant="contained"
+              onClick={() => navigate("/resale/sell", { state: { resalePrice: props.resaleValue } })}
+            >
+              Sell at Suggested Price
+            </Button>
           </Grid>
         </Grid>
       </Container>

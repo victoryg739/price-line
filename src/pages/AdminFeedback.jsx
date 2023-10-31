@@ -55,11 +55,10 @@ function AdminFeedback() {
    * Redirects to login page if user is not authenticated.
    */
   useEffect(() => {
-    if (localStorage.getItem("access_token") === null) {
-      navigate("/login");
+    if (localStorage.getItem("admin_token") === null) {
+      navigate("/admin-login");
     }
   });
-
 
   return (
     <>
@@ -71,21 +70,11 @@ function AdminFeedback() {
         </Typography>
         {data.length ? (
           <>
-            <Typography
-              color="red"
-              fontWeight="bold"
-              component="h1"
-              variant="h6"
-              align="left"
-            >
+            <Typography color="red" fontWeight="bold" component="h1" variant="h6" align="left">
               Count: {data.length}
             </Typography>
 
-            <CustomTable
-              columns={columnName}
-              rows={data}
-              deleteFeedback={deleteFeedback}
-            ></CustomTable>
+            <CustomTable columns={columnName} rows={data} deleteFeedback={deleteFeedback}></CustomTable>
           </>
         ) : (
           <Typography

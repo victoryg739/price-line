@@ -12,7 +12,7 @@
  * @param {string} props.data.flat_model - The model of the HDB resale flat.
  * @param {string} props.data.month - The month in which the HDB resale flat was posted.
  * @param {number} props.data.resale_price - The resale price of the HDB flat.
-*/
+ */
 import React from "react";
 import { Paper } from "@mui/material";
 import homeImage1 from "../assets/home1.jpg";
@@ -30,34 +30,27 @@ import Grid from "@mui/material/Grid";
  * @param {number} id - The id of the carousel item.
  * @returns {string} - The image path of the home to display.
  */
-let chooseImage = (id)=>{
-    if(id > 4){
-        id = id - 5;
-    }
-    if(id ===  0){
-        return homeImage1;
-    }
-    else if(id === 1){
-        return homeImage2;
-    }
-    else if(id === 2){
-        return homeImage3;
-    }
-    else if(id === 3){
-        return homeImage4;
-    }else{
-        return homeImage5;
-    }
-}
+let chooseImage = (id) => {
+  if (id > 4) {
+    id = id - 5;
+  }
+  if (id === 0) {
+    return homeImage1;
+  } else if (id === 1) {
+    return homeImage2;
+  } else if (id === 2) {
+    return homeImage3;
+  } else if (id === 3) {
+    return homeImage4;
+  } else {
+    return homeImage5;
+  }
+};
 
 function CarouselItem(props) {
   return (
     <Paper>
-      <img
-        src={chooseImage(props.id)}
-        alt="homeImage"
-        style={{ width: "100%", height: "40vh", objectFit: "cover" }}
-      />
+      <img src={chooseImage(props.id)} alt="homeImage" style={{ width: "100%", height: "40vh", objectFit: "cover" }} />
       <Grid container sx={{ m: 5 }} rowSpacing={1}>
         <Grid alignItems="right" item xs={3}>
           <Typography variant="inherit" color="grey">
@@ -66,9 +59,7 @@ function CarouselItem(props) {
         </Grid>
         <Grid item xs={3}>
           {/* <Typography variant="h6" display="inline"> {props.data.town}</Typography> */}
-          <Typography variant="body1">
-            {props.data.block + " " + props.data.street_name}
-          </Typography>
+          <Typography variant="body1">{props.data.block + " " + props.data.street_name}</Typography>
         </Grid>
         <Grid item xs={3}>
           <Typography variant="inherit" color="grey">
@@ -92,9 +83,7 @@ function CarouselItem(props) {
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <Typography variant="body1">
-            {props.data.floor_area_sqm + " sqm"}
-          </Typography>
+          <Typography variant="body1">{props.data.floor_area_sqm + " sqm"}</Typography>
         </Grid>
         <Grid item xs={3}>
           <Typography variant="inherit" color="grey">
@@ -102,9 +91,7 @@ function CarouselItem(props) {
           </Typography>
         </Grid>
         <Grid item xs={3}>
-          <Typography variant="body1">
-            {props.data.flat_model}
-          </Typography>
+          <Typography variant="body1">{props.data.flat_model}</Typography>
         </Grid>
         <Grid item xs={3}>
           <Typography variant="inherit" color="grey">
@@ -115,9 +102,7 @@ function CarouselItem(props) {
           <Typography variant="body1">{props.data.month}</Typography>
         </Grid>
         <Grid item xs={12} sx={{ pr: 10, mt: 5, mb: 2 }} align="right">
-          <Typography variant="h5">
-            {"SGD$ " + props.data.resale_price}
-          </Typography>
+          <Typography variant="h5">{"SGD$ " + props.data.resale_price}</Typography>
         </Grid>
       </Grid>
     </Paper>

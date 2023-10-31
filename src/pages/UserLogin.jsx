@@ -1,8 +1,3 @@
-/**
-
-A component representing the login page for admin users
-@returns {JSX.Element} The JSX code representing the login page
-*/
 import React from "react";
 import NavBar from "../components/NavBar";
 
@@ -20,49 +15,40 @@ import { Box } from "@mui/material";
 import { useNavigate } from "react-router-dom";
 import { Alert } from "@mui/material";
 
-function Login() {
+export default function UserLogin() {
   const navigate = useNavigate();
-  const [errorAuthenticate, seterrorAuthenticate] = useState(false);
   const [username, setUsername] = useState("");
   const [password, setPassword] = useState("");
-  /**
+  const [message, setMessage] = useState("");
 
-  Function to handle login for admin user
-  @param {object} event - The event object
-  */
-  let handleAdminLogin = async (event) => {
+  const handleLogin = async (event) => {
     try {
-      if (username === "" || password === "") {
-        seterrorAuthenticate(true);
-        return;
-      }
       const user = { username: username, password: password };
-      const response = await axios.post(
-        "http://localhost:8000/api/token/",
-        user,
-        { headers: { "Content-Type": "application/json" } }
-      );
-      console.log("response");
+      const response = await axios.post("http://127.0.0.1:8000/login", user, {
+        headers: { "Content-Type": "application/json" },
+      });
+
       if (response.status === 200) {
-        // Initialize the access & refresh token in localstorage.
-        localStorage.clear();
-        localStorage.setItem("access_token", response.data.access);
-        localStorage.setItem("refresh_token", response.data.refresh);
-        navigate("/admin");
+        setMessage(response.data.message);
+        // Handle successful login, e.g., redirect to dashboard or set user state
+        localStorage.setItem("user_token", JSON.stringify(response.data));
+        navigate("/resale/buy");
+      } else {
+        setMessage(response.data.message);
       }
     } catch (error) {
-      if (error.response.status === 401) {
-        // Handle 401 Unauthorized error
-        localStorage.clear();
-        seterrorAuthenticate(true);
-        console.log("Unauthorized");
+      if (error.response) {
+        // The request was made and the server responded with a status code outside of the range of 2xx
+        setMessage(error.response.data.message || "Error occurred");
+      } else if (error.request) {
+        // The request was made but no response was received
+        setMessage("No response from server");
       } else {
-        // Handle other errors
-        console.error(error);
+        // Something happened in setting up the request that triggered an Error
+        setMessage("Error in sending request");
       }
     }
   };
-
   return (
     <Box>
       <NavBar></NavBar>
@@ -75,11 +61,11 @@ function Login() {
         style={{ minHeight: "100vh" }}
       >
         <Typography component="h1" variant="h5" align="center" sx={{ mt: 10 }}>
-          Admin Login
+          User Login
         </Typography>
-        {errorAuthenticate && (
+        {message && (
           <Alert sx={{ mt: 5 }} severity="error">
-            Wrong username or password. Try again!{" "}
+            {message}
           </Alert>
         )}
 
@@ -106,13 +92,13 @@ function Login() {
           id="password"
           sx={{ mt: 6, width: "40%", maxWidth: "md" }}
         />
-
-        <Button
-          sx={{ mt: 10 }}
-          variant="contained"
-          endIcon={<SendIcon />}
-          onClick={handleAdminLogin}
-        >
+        <Button sx={{ mt: 2, ml: 65 }} variant="contained" onClick={() => navigate("/user-register")}>
+          Register User?
+        </Button>
+        <Button sx={{ mt: 2, ml: 65 }} variant="contained" onClick={() => navigate("/admin-login")}>
+          Admin Login?
+        </Button>
+        <Button sx={{ mt: 5 }} variant="contained" endIcon={<SendIcon />} onClick={handleLogin}>
           Login
         </Button>
       </Grid>
@@ -120,5 +106,3 @@ function Login() {
     </Box>
   );
 }
-
-export default Login;

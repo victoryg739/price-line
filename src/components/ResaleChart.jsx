@@ -5,21 +5,12 @@ ResaleChart component renders a bar chart using Recharts library to display the 
 @returns {JSX.Element} - The JSX element for the ResaleChart component.
 */
 
-import {
-  BarChart,
-  XAxis,
-  YAxis,
-  CartesianGrid,
-  Tooltip,
-  Legend,
-  Bar,
-  ResponsiveContainer,
-} from "recharts";
+import { BarChart, XAxis, YAxis, CartesianGrid, Tooltip, Legend, Bar, ResponsiveContainer } from "recharts";
 
 export default function ResaleChart(props) {
-  const data = [{ name: "Predicted Value", price: props.resaleValue }];
+  const data = [{ price: props.resaleValue }];
   return (
-    <ResponsiveContainer  width="100%" height={400}>
+    <ResponsiveContainer width="100%" height={400}>
       <BarChart
         data={data}
         margin={{
@@ -30,7 +21,7 @@ export default function ResaleChart(props) {
         }}
       >
         <CartesianGrid strokeDasharray="3 3" />
-        <XAxis dataKey = "name"/>
+        <XAxis dataKey="name" />
         <YAxis />
         <Tooltip />
         <Legend />
